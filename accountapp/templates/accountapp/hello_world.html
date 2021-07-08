@@ -6,10 +6,15 @@
         <h1>메뚜기월드에 오신걸 환영합니다</h1>
 
         <form action="/accounts/hello_world/" method="post">
+
             {%  csrf_token %}
+
             <input type="text" name="hello_world_input">
+
             <input type="submit" class="px-5 btn btn-outline-warning rounded-pill">
+
         </form>
+
         <h3>{{  hello_world_output.text  }}</h3>
     </div>
 
