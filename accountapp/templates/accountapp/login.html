@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
-{%  block content %}
+{% block content %}
 
     <div class = "text-center mw-500 m-auto">
         <div>
             <h4>Login</h4>
         </div>
         <div>
-            <form action="% url 'accountapp:login" method="post">
+            <form action="" method="post">
                 {%  csrf_token %}
                 {{ form }}
                 <input type="submit" class="btn btn-dark rounded-pill px-5">
