@@ -3,17 +3,20 @@
 
 {% block content %}
 
-<div class = "text-center mw-300 m-auto">
-    <div class = "m-4">
+<div class="text-center mw-300 m-auto">
+    <div class="m-4">
         <h4>Login</h4>
     </div>
     <div>
-        <form action="" method="post">
+        <form action="{% url 'accountapp:login' %}" method="post">
             {% csrf_token %}
             {% bootstrap_form form %}
-            <input type="submit" class="btn btn-outline-secondary rounded-pill col-3 mt-2">
+            <div class="m-5">
+                <input type="submit"
+                       class="btn btn-outline-secondary rounded-pill col-6 mt-2">
+            </div>
         </form>
     </div>
-</5div>
+</div>
 
 {%  endblock %}
