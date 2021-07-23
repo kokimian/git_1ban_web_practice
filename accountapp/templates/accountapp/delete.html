@@ -7,7 +7,7 @@
         <h4>Quit</h4>
     </div>
     <div>
-        <form action="{% url 'accountapp:delete' pk=user.pk %}" method="post"> {# 이제부턴 url 라우팅을 이런 방식으로 일원화 한다. 이전 방식은 /accounts/create} #}
+        <form action="{% url 'accountapp:delete' pk=target_user.pk %}" method="post"> {# 이제부턴 url 라우팅을 이런 방식으로 일원화 한다. 이전 방식은 /accounts/create} #}
             {% csrf_token %}
             <div class="m-4">
                 <input type="submit"
