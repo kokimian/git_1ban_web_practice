@@ -16,8 +16,8 @@
     font-family: 'Pacifico', cursive;
 }
 
-.mw-300 {
-    max-width: 300px;
+.mw-500 {
+    max-width: 500px;
     margin: 1rem 1.5rem;
 }
 
@@ -30,4 +30,16 @@
 
 .NNS_B {
     font-family: 'NanumSquareB', cursive;
+}
+
+.round_button {
+    color: black;
+    text-decoration: none;
+    box-shadow: 0 0 3px black;
+    border-radius: 20rem;
+    padding: 0.3rem;
+}
+
+.round_button:hover {
+    color: dimgrey;
 }
