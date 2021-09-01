@@ -22,6 +22,8 @@ class ArticleCreateView(CreateView):
         temp_article = form.save(commit=False)
         temp_article.writer = self.request.user
         temp_article.save()
+        # form.instance.writer = self.request.user 수업때는 이렇게함
+        # return super().form_valid(form)
         return super().form_valid(form)
 
     def get_success_url(self):
