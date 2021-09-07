@@ -6,13 +6,13 @@
     <style>
 
         .container div {
-          width: 250px;
-          {#height: 500px;#}
-          background-color: antiquewhite;
+          width: 280px;
           display: flex;
           justify-content: center;
           align-items: center;
           border-radius: 1rem;
+            flex-direction: column;
+            box-shadow: 0 0 1rem darkgrey;
         }
 
         .container img {
@@ -21,61 +21,29 @@
         }
 
 
-
     </style>
 
-    <div class="container">
-      <div class="item1">
-          <img src="https://picsum.photos/200/300" alt="">
-      </div>
-      <div class="item1">
-          <img src="https://picsum.photos/300/300" alt="">
-      </div>
-      <div class="item1">
-          <img src="https://picsum.photos/400/300" alt="">
-      </div>
-      <div class="item1">
-          <img src="https://picsum.photos/500/300" alt="">
-      </div>
-      <div class="item1">
-          <img src="https://picsum.photos/200/200" alt="">
-      </div>
-      <div class="item1">
-          <img src="https://picsum.photos/200/300" alt="">
-      </div>
-      <div class="item1">
-          <img src="https://picsum.photos/200/400" alt="">
-      </div>
-      <div class="item1">
-          <img src="https://picsum.photos/200/500" alt="">
-      </div><div class="item1">
-          <img src="https://picsum.photos/200/300" alt="">
-      </div>
-      <div class="item1">
-          <img src="https://picsum.photos/300/300" alt="">
-      </div>
-      <div class="item1">
-          <img src="https://picsum.photos/400/300" alt="">
-      </div>
-      <div class="item1">
-          <img src="https://picsum.photos/500/300" alt="">
-      </div>
-      <div class="item1">
-          <img src="https://picsum.photos/200/200" alt="">
-      </div>
-      <div class="item1">
-          <img src="https://picsum.photos/200/300" alt="">
-      </div>
-      <div class="item1">
-          <img src="https://picsum.photos/200/400" alt="">
-      </div>
-      <div class="item1">
-          <img src="https://picsum.photos/200/500" alt="">
-      </div>
+    <div class="container my-5">
+
+        {% for article in article_list %}
+
+            <div>
+                <a href="{% url 'articleapp:detail' pk=article.pk %}">
+                    <img src="{{ article.image.url }}" alt="">
+                </a>
+                <span class="NNS_B m-2">{{ article.title }}</span>
+            </div>
+
+        {% endfor %}
+
     </div>
 
-    <div style="text-align: center">
-        <a href="{% url 'articleapp:create' %}" class="btn btn-dark rounded-pill col-3 mt-3 mb-3">
+    <div class="text-center my-5">
+        <a class="btn btn-dark rounded-pill material-icons">
+            brush
+        </a>
+        <a href="{% url 'articleapp:create' %}"
+           class="btn btn-outline-dark rounded-pill px-5">
             Create Article
         </a>
     </div>
