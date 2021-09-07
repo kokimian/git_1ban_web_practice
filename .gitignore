@@ -87,3 +87,5 @@ staticfiles/
 
 ianterest_gcp
 ianterest_gcp.pub
+
+dockerfile
