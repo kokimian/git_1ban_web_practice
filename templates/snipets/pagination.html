@@ -1,8 +1,12 @@
     <div class="text-center my-5">
         {% if page_obj.has_previous %}
+            <a href="?page=1"
+                class="btn btn-secondary rounded-pill">
+                처음
+            </a>
             <a href="?page={{ page_obj.previous_page_number }}"
                 class="btn btn-secondary rounded-pill">
-                {{ page_obj.previous_page_number }}
+            {{ page_obj.previous_page_number }}
             </a>
         {% endif %}
         <a href="#"
@@ -13,6 +17,10 @@
             <a href="?page={{ page_obj.next_page_number }}"
                 class="btn btn-secondary rounded-pill">
                 {{ page_obj.next_page_number }}
+            </a>
+            <a href="?page={{ page_obj.paginator.num_pages }}"
+                class="btn btn-secondary rounded-pill">
+                끝
             </a>
         {% endif %}
     </div>
