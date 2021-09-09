@@ -87,3 +87,7 @@ staticfiles/
 
 ianterest_gcp
 ianterest_gcp.pub
+
+Dockerfile
+
+nginx.conf
