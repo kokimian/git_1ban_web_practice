@@ -4,7 +4,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
-from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, ListView
 
 from articleapp.decorators import article_ownership_required
 from articleapp.forms import ArticleCreationForm
@@ -19,11 +19,10 @@ class ArticleCreateView(CreateView):
     template_name = 'articleapp/create.html'
 
     def form_valid(self, form):
-        temp_article = form.save(commit=False)
-        temp_article.writer = self.request.user
-        temp_article.save()
-        # form.instance.writer = self.request.user 수업때는 이렇게함
-        # return super().form_valid(form)
+        form.instance.writer = self.request.user
+        # temp_article = form.save(commit=False) # 온라인 강의 코드
+        # temp_article.writer = self.request.user
+        # temp_article.save()
         return super().form_valid(form)
 
     def get_success_url(self):
@@ -55,4 +54,12 @@ class ArticleDeleteView(DeleteView):
     context_object_name = 'target_article'
     success_url = reverse_lazy('articleapp:list')
     template_name = 'articleapp/delete.html'
+
+
+class ArticleListView(ListView):
+    model = Article
+    context_object_name = "article_list"
+    template_name = "articleapp/list.html"
+    paginate_by = 1
+
 
