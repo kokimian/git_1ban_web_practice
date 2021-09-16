@@ -1,6 +1,39 @@
 version: "3.7"
 services:
+  nginx:
+    image: nginx:1.19.5
+    networks:
+      - ianterest_network
+    volumes:
+      - ianterest_static:/data/static/
+      - ianterest_media:/data/media/
+      - /home/ian.s.kim.1022/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+
   django:
-    image: ianterest:1
-      ports:
-        - 8080:8000
+    image: ianterest:4
+    networks:
+      - ianterest_network
+    volumes:
+      - ianterest_static:/home/git_1ban_web_practice/staticfiles/
+      - ianterest_media:/home/git_1ban_web_practice/media/
+
+  mariadb:
+    image: mariadb:10.5
+    networks:
+      - ianterest_network
+    volumes:
+      - ianterest_mariadb:/var/lib/mysql
+    environment:
+      MARIADB_ROOT_PASSWORD: asdf1234!
+      MARIADB_DATABASE: django
+      MARIADB_USER: django
+      MARIADB_PASSWORD: asdf1234!
+
+networks:
+  ianterest_network:
+volumes:
+  ianterest_static:
+  ianterest_media:
+  ianterest_mariadb:
