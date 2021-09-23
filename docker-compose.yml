@@ -12,9 +12,13 @@ services:
       - 80:80
 
   django:
-    image: ianterest:4
+    image: ianterest:5
     networks:
       - ianterest_network
+    secrets:
+      - DJANGO_SECRET_KEY
+      - MARIADB_USER
+      - MARIADB_PASSWORD
     volumes:
       - ianterest_static:/home/git_1ban_web_practice/staticfiles/
       - ianterest_media:/home/git_1ban_web_practice/media/
@@ -25,15 +29,30 @@ services:
       - ianterest_network
     volumes:
       - ianterest_mariadb:/var/lib/mysql
+    secrets:
+      - MARIADB_USER
+      - MARIADB_PASSWORD
+      - MARIADB_ROOT_PASSWORD
     environment:
-      MARIADB_ROOT_PASSWORD: asdf1234!
       MARIADB_DATABASE: django
-      MARIADB_USER: django
-      MARIADB_PASSWORD: asdf1234!
+      MARIADB_USER_FILE: /run/secrets/MARIADB_USER
+      MARIADB_PASSWORD_FILE: /run/secrets/MARIADB_PASSWORD
+      MARIADB_ROOT_PASSWORD_FILE: /run/secrets/MARIADB_ROOT_PASSWORD
 
 networks:
   ianterest_network:
+
 volumes:
   ianterest_static:
   ianterest_media:
   ianterest_mariadb:
+
+secrets:
+  MARIADB_USER:
+    external: true
+  MARIADB_PASSWORD:
+    external: true
+  MARIADB_ROOT_PASSWORD:
+    external: true
+  DJANGO_SECRET_KEY:
+    external: true
